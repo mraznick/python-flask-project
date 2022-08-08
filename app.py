@@ -34,3 +34,18 @@ Boss(name='Chaos Witch Quelaag', ngHealth=3139,
      drops='Soul of Quelaag, 20,000 souls, 1 Twin Humanities').save()
 Boss(name='Dark Sun Gwyndolin', ngHealth=2000,
      drops='Soul of Gwyndolin, 40,000 souls')
+
+app = Flask(__name__)
+
+
+@app.route('/bosses/', methods=['GET', 'POST'])
+@app.route('/bosses/<id>', methods=['GET', 'PUT', 'DELETE'])
+def endpoint(id=None):
+    if request.method == 'GET':
+        if id:
+            return jsonify(model_to_dict(Boss.get(Boss.id == id)))
+        else:
+            boss_list = []
+            for boss in Boss.select():
+                boss_list.append(model_to_dict(boss))
+            return jsonify(boss_list)
