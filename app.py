@@ -55,7 +55,9 @@ def endpoint(id=None):
             return jsonify(boss_list)
 
     if request.method == 'PUT':
-        return 'PUT request'
+        body = request.get_json()
+        Boss.update(body).where(Boss.id == id).execute()
+        return f"Lord {str(id)}\'s second phase has begun!"
 
     if request.method == 'POST':
         new_boss = dict_to_model(Boss, request.get_json())
