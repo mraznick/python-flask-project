@@ -22,6 +22,10 @@ class Boss(BaseModel):
     drops = CharField()
 
 
+db.connect()
+db.drop_tables([Boss])
+db.create_tables([Boss])
+
 Boss(name='Asylum Demon', ngHealth=825,
      drops='2000 souls, 1 Humanity, Big Pilgrim\'s Key, chance to drop Demon\'s Great Hammer').save()
 Boss(name='Bell Gargoyles', ngHealth=3700,
@@ -33,7 +37,7 @@ Boss(name='Centipede Demon', ngHealth=3432,
 Boss(name='Chaos Witch Quelaag', ngHealth=3139,
      drops='Soul of Quelaag, 20,000 souls, 1 Twin Humanities').save()
 Boss(name='Dark Sun Gwyndolin', ngHealth=2000,
-     drops='Soul of Gwyndolin, 40,000 souls')
+     drops='Soul of Gwyndolin, 40,000 souls').save()
 
 app = Flask(__name__)
 
