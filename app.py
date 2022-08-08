@@ -52,3 +52,8 @@ def endpoint(id=None):
 
     if request.method == 'PUT':
         return 'PUT request'
+
+    if request.method == 'POST':
+        new_boss = dict_to_model(Boss, request.get_json())
+        new_boss.save()
+        return jsonify({"A new lord is born!!!": True})
