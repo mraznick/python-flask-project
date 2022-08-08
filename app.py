@@ -57,3 +57,7 @@ def endpoint(id=None):
         new_boss = dict_to_model(Boss, request.get_json())
         new_boss.save()
         return jsonify({"A new lord is born!!!": True})
+
+    if request.method == 'DELETE':
+        Boss.delete().where(Boss.id == id).execute()
+        return f"HEIR OF FIRE {str(id)} DESTROYED"
