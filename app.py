@@ -49,3 +49,6 @@ def endpoint(id=None):
             for boss in Boss.select():
                 boss_list.append(model_to_dict(boss))
             return jsonify(boss_list)
+
+    if request.method == 'PUT':
+        return 'PUT request'
