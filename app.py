@@ -61,3 +61,6 @@ def endpoint(id=None):
     if request.method == 'DELETE':
         Boss.delete().where(Boss.id == id).execute()
         return f"HEIR OF FIRE {str(id)} DESTROYED"
+
+
+app.run()
