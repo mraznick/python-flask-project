@@ -3,7 +3,7 @@ from peewee import *
 from playhouse.shortcuts import model_to_dict, dict_to_model
 
 db = PostgresqlDatabase(
-    'dark-souls-bosses',
+    'dark_souls_bosses',
     user='mraznick',
     password='',
     host='localhost',
@@ -63,4 +63,4 @@ def endpoint(id=None):
         return f"HEIR OF FIRE {str(id)} DESTROYED"
 
 
-app.run()
+app.run(port=9000, debug=True)
